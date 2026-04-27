@@ -10,5 +10,12 @@ function navigate(screen) {
 }
 
 function toggleSidebar() {
-  document.getElementById('sidebar-wrap').classList.toggle('collapsed');
+  const wrap = document.getElementById('sidebar-wrap');
+  wrap.classList.toggle('collapsed');
+  if (wrap.classList.contains('collapsed')) {
+    wrap.classList.add('no-hover');
+    wrap.addEventListener('mouseleave', function() {
+      wrap.classList.remove('no-hover');
+    }, { once: true });
+  }
 }
