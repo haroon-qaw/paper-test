@@ -66,8 +66,14 @@
     .nav-item.active span { color: #000; font-weight: 700; font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; }
     .nav-item:not(.active):hover { background: #f0f0f0; }
     .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; white-space: nowrap; }
+    .sidebar-wrap.collapsed .sidebar-header { flex-direction: column; align-items: center; gap: 12px; }
+    .sidebar-wrap.collapsed:hover .sidebar-header { flex-direction: row; }
+    .sidebar-wrap.collapsed .nav-item { justify-content: center; padding: 9px; }
+    .sidebar-wrap.collapsed:hover .nav-item { justify-content: flex-start; padding: 9px 12px; }
     .sidebar-wrap.collapsed .nav-item span { display: none; }
     .sidebar-wrap.collapsed:hover .nav-item span { display: inline; }
+    .sidebar-wrap.collapsed .user-card { justify-content: center; border-color: transparent; background: transparent; padding: 4px; }
+    .sidebar-wrap.collapsed:hover .user-card { justify-content: flex-start; border-color: #eee; background: #fff; padding: 10px 12px; }
     .sidebar-wrap.collapsed .user-info { display: none; }
     .sidebar-wrap.collapsed:hover .user-info { display: flex; }
     .user-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #eee; background: #fff; }
