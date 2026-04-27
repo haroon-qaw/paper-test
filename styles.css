@@ -153,7 +153,7 @@ body {
   text-decoration: none;
 }
 .nav-item.active { background: #FFA400; }
-.nav-item.active span { color: #fff; font-weight: 700; }
+.nav-item.active span { color: #000; font-weight: 700; }
 .nav-item:not(.active):hover { background: #f0f0f0; }
 .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
 .nav-item.active span { font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; font-weight: 700; }
