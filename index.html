@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>App</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #f0f0f0;
+      background: #e8e8e8;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,163 +17,190 @@
     }
 
     .screen {
-      width: 390px;
-      height: 844px;
+      width: 1280px;
+      height: 800px;
       background: #fff;
       display: none;
-      flex-direction: column;
+      flex-direction: row;
       overflow: hidden;
-      border-radius: 40px;
+      border-radius: 12px;
       box-shadow: 0 24px 80px rgba(0,0,0,0.15);
     }
     .screen.active { display: flex; }
 
-    /* Status bar */
-    .status-bar {
-      display: flex;
-      align-items: center;
-      padding: 21px 24px 19px;
-      gap: 0;
-    }
-    .status-time {
-      flex: 1;
-      font-size: 17px;
-      font-weight: 600;
-      font-family: system-ui, sans-serif;
-      text-align: center;
-      color: #000;
-    }
-    .status-icons {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
-
     /* ── LOGIN ── */
-    .login-hero {
-      padding: 64px 32px 48px;
+    .login-left {
+      width: 560px;
+      flex-shrink: 0;
+      background: #3B3BEF;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      justify-content: space-between;
+      padding: 56px 64px;
     }
-    .login-title {
-      font-size: 36px;
+    .login-logo {
+      font-size: 22px;
       font-weight: 700;
-      color: #111;
-      letter-spacing: -0.03em;
-      line-height: 40px;
+      color: #fff;
+      letter-spacing: -0.02em;
     }
-    .login-subtitle {
+    .login-tagline { display: flex; flex-direction: column; gap: 16px; }
+    .login-headline {
+      font-size: 48px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 52px;
+    }
+    .login-sub {
       font-size: 16px;
-      font-weight: 900;
-      color: #888;
+      color: rgba(255,255,255,0.6);
       line-height: 24px;
     }
+    .login-copy { font-size: 13px; color: rgba(255,255,255,0.4); }
 
-    .login-form {
-      padding: 0 32px;
+    .login-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px;
+    }
+    .login-form-wrap {
+      width: 100%;
+      max-width: 360px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 32px;
     }
+    .login-heading { display: flex; flex-direction: column; gap: 8px; }
+    .login-title { font-size: 28px; font-weight: 700; color: #111; letter-spacing: -0.03em; line-height: 34px; }
+    .login-desc { font-size: 15px; color: #888; line-height: 22px; }
+
+    .form-fields { display: flex; flex-direction: column; gap: 16px; }
     .field { display: flex; flex-direction: column; gap: 6px; }
-    .field-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: 0.08em;
-      line-height: 16px;
-    }
+    .field-label { font-size: 12px; font-weight: 700; color: #111; letter-spacing: 0.08em; }
     .field-input {
       border: 1.5px solid #eee;
       border-radius: 10px;
-      padding: 14px 16px;
+      padding: 13px 16px;
       font-family: inherit;
-      font-size: 16px;
+      font-size: 15px;
       color: #888;
-      line-height: 24px;
+      line-height: 22px;
       outline: none;
       transition: border-color 0.15s;
+      width: 100%;
     }
     .field-input:focus { border-color: #3B3BEF; color: #111; }
-    .field-input::placeholder { color: #aaa; }
-
     .forgot {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #3B3BEF;
       text-align: right;
-      line-height: 20px;
       cursor: pointer;
       text-decoration: none;
     }
 
-    .login-cta {
-      padding: 32px 32px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .form-actions { display: flex; flex-direction: column; gap: 16px; }
     .btn-primary {
       background: #3B3BEF;
       border: none;
-      border-radius: 12px;
-      padding: 17px;
+      border-radius: 10px;
+      padding: 15px;
       font-family: inherit;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #fff;
       text-align: center;
       letter-spacing: -0.01em;
-      line-height: 22px;
       cursor: pointer;
       transition: opacity 0.15s;
+      width: 100%;
     }
     .btn-primary:hover:not(:disabled) { opacity: 0.88; }
     .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
 
-    .signup-link {
-      font-size: 14px;
-      color: #888;
-      text-align: center;
-      line-height: 20px;
-    }
-    .signup-link a {
-      color: #3B3BEF;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-    }
+    .signup-link { font-size: 13px; color: #888; text-align: center; }
+    .signup-link a { color: #3B3BEF; font-weight: 700; text-decoration: none; cursor: pointer; }
 
     /* ── HOME ── */
-    .home-nav {
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: #FAFAFA;
+      border-right: 1.5px solid #EEEEEE;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 24px;
+    }
+    .sidebar-top { display: flex; flex-direction: column; gap: 32px; }
+    .sidebar-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; }
+    .nav { display: flex; flex-direction: column; gap: 4px; }
+    .nav-item {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 16px 32px 12px;
-      border-bottom: 1.5px solid #eee;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .home-nav-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: -0.03em;
-      line-height: 28px;
-      white-space: nowrap;
+    .nav-item.active { background: #3B3BEF; }
+    .nav-item.active span { color: #fff; font-weight: 700; }
+    .nav-item:not(.active):hover { background: #f0f0f0; }
+    .nav-item span { font-size: 14px; color: #888; }
+
+    .user-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #eee;
+      background: #fff;
     }
     .avatar {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: #3B3BEF;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .user-info { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
+    .user-name { font-size: 13px; font-weight: 700; color: #111; white-space: nowrap; }
+    .user-email { font-size: 11px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .main { flex: 1; display: flex; flex-direction: column; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1.5px solid #EEEEEE;
+      flex-shrink: 0;
+    }
+    .topbar-title { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; }
+    .btn-new {
+      background: #3B3BEF;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-family: inherit;
       font-size: 13px;
       font-weight: 700;
       color: #fff;
-      flex-shrink: 0;
+      cursor: pointer;
+      transition: opacity 0.15s;
     }
+    .btn-new:hover { opacity: 0.88; }
 
     .empty-state {
       flex: 1;
@@ -181,94 +208,95 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 32px;
+      gap: 14px;
     }
-    .empty-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #111;
-      letter-spacing: -0.01em;
-      line-height: 24px;
-    }
-    .empty-body {
-      font-size: 14px;
-      color: #888;
-      text-align: center;
-      line-height: 20px;
-    }
+    .empty-title { font-size: 16px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
+    .empty-body { font-size: 14px; color: #888; text-align: center; max-width: 280px; line-height: 20px; }
   </style>
 </head>
 <body>
 
   <!-- LOGIN SCREEN -->
   <div class="screen active" id="screen-login">
-    <div class="status-bar">
-      <div class="status-time">9:41</div>
-      <div class="status-icons">
-        <svg width="82" height="22" viewBox="0 0 82 22" fill="black">
-          <path d="M3.7 13H2.5a1 1 0 0 0-1 1v2.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V14a1 1 0 0 0-1-1m5.2-2.5H7.7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1M14.1 8h-1.2a1 1 0 0 0-1 1v7.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1m5.2-2.5h-1.2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1"/>
-          <path fill-rule="evenodd" d="M36.57 7.8c2.49 0 4.88.92 6.68 2.58.14.13.36.12.49 0l1.3-1.27a.34.34 0 0 0 0-.5 12.55 12.55 0 0 0-16.93 0 .34.34 0 0 0 0 .5l1.3 1.26c.13.13.34.14.48 0a10 10 0 0 1 6.68-2.57m0 4.22a5.4 5.4 0 0 1 3.67 1.44c.14.13.35.13.48 0l1.3-1.33a.37.37 0 0 0-.01-.52 7.9 7.9 0 0 0-10.88 0 .37.37 0 0 0 0 .52l1.29 1.32c.13.14.34.14.48 0 1-.92 2.31-1.43 3.67-1.43m2.52 2.8q0 .15-.1.28l-2.18 2.45a.3.3 0 0 1-.24.11.3.3 0 0 1-.24-.1l-2.18-2.46a.43.43 0 0 1 .01-.56 3.44 3.44 0 0 1 4.82 0 .4.4 0 0 1 .11.28" clip-rule="evenodd"/>
-          <path fill-rule="evenodd" d="M70.5 5c2.05 0 3.08 0 3.88.34a4.3 4.3 0 0 1 2.28 2.28c.34.8.34 1.83.34 3.88s0 3.08-.34 3.88a4.3 4.3 0 0 1-2.28 2.28c-.8.34-1.83.34-3.88.34h-12c-2.05 0-3.08 0-3.88-.34a4.3 4.3 0 0 1-2.28-2.28c-.34-.8-.34-1.83-.34-3.88s0-3.08.34-3.88a4.3 4.3 0 0 1 2.28-2.28C55.42 5 56.45 5 58.5 5zM58.28 6c-1.85 0-2.77 0-3.48.36a3.3 3.3 0 0 0-1.44 1.44C53 8.5 53 9.43 53 11.28v.44c0 1.85 0 2.77.36 3.48a3.3 3.3 0 0 0 1.44 1.44c.7.36 1.63.36 3.48.36h12.44c1.85 0 2.77 0 3.48-.36a3.3 3.3 0 0 0 1.44-1.44c.36-.7.36-1.63.36-3.48v-.44c0-1.85 0-2.77-.36-3.48a3.3 3.3 0 0 0-1.44-1.44C73.5 6 72.57 6 70.72 6z" clip-rule="evenodd" style="opacity:.35"/>
-          <path d="M54 11c0-1.4 0-2.1.27-2.63a2.5 2.5 0 0 1 1.1-1.1C55.9 7 56.6 7 58 7h13c1.4 0 2.1 0 2.64.27q.72.37 1.09 1.1C75 8.9 75 9.6 75 11v1c0 1.4 0 2.1-.27 2.64a2.5 2.5 0 0 1-1.1 1.09C73.1 16 72.4 16 71 16H58c-1.4 0-2.1 0-2.63-.27a2.5 2.5 0 0 1-1.1-1.1C54 14.1 54 13.4 54 12z"/>
-          <path d="M78 9.5v4.08a2.2 2.2 0 0 0 1.33-2.04A2.2 2.2 0 0 0 78 9.5" style="opacity:.35"/>
-        </svg>
+    <div class="login-left">
+      <div class="login-logo">App</div>
+      <div class="login-tagline">
+        <div class="login-headline">The simplest way to get things done.</div>
+        <div class="login-sub">Sign in to pick up right where you left off.</div>
       </div>
+      <div class="login-copy">© 2026 App Inc.</div>
     </div>
-
-    <div class="login-hero">
-      <div class="login-title">Welcome back.</div>
-      <div class="login-subtitle">Sign in to continue</div>
-    </div>
-
-    <div class="login-form">
-      <div class="field">
-        <div class="field-label">EMAIL</div>
-        <input class="field-input" id="email" type="email" placeholder="you@example.com" oninput="checkFields()" />
+    <div class="login-right">
+      <div class="login-form-wrap">
+        <div class="login-heading">
+          <div class="login-title">Welcome back.</div>
+          <div class="login-desc">Sign in to your account to continue.</div>
+        </div>
+        <div class="form-fields">
+          <div class="field">
+            <div class="field-label">EMAIL</div>
+            <input class="field-input" id="email" type="email" placeholder="you@example.com" oninput="checkFields()" />
+          </div>
+          <div class="field">
+            <div class="field-label">PASSWORD</div>
+            <input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkFields()" />
+          </div>
+          <a class="forgot">Forgot password?</a>
+        </div>
+        <div class="form-actions">
+          <button class="btn-primary" id="sign-in-btn" onclick="navigate('home')" disabled>Sign In</button>
+          <div class="signup-link">Don't have an account? <a>Sign up</a></div>
+        </div>
       </div>
-      <div class="field">
-        <div class="field-label">PASSWORD</div>
-        <input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkFields()" />
-      </div>
-      <a class="forgot">Forgot password?</a>
-    </div>
-
-    <div class="login-cta">
-      <button class="btn-primary" id="sign-in-btn" onclick="navigate('home')" disabled>Sign In</button>
-      <div class="signup-link">Don't have an account? <a>Sign up</a></div>
     </div>
   </div>
 
   <!-- HOME SCREEN -->
   <div class="screen" id="screen-home">
-    <div class="status-bar">
-      <div class="status-time">9:41</div>
-      <div class="status-icons">
-        <svg width="82" height="22" viewBox="0 0 82 22" fill="black">
-          <path d="M3.7 13H2.5a1 1 0 0 0-1 1v2.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V14a1 1 0 0 0-1-1m5.2-2.5H7.7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1M14.1 8h-1.2a1 1 0 0 0-1 1v7.5a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1m5.2-2.5h-1.2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h1.2a1 1 0 0 0 1-1v-10a1 1 0 0 0-1-1"/>
-          <path fill-rule="evenodd" d="M36.57 7.8c2.49 0 4.88.92 6.68 2.58.14.13.36.12.49 0l1.3-1.27a.34.34 0 0 0 0-.5 12.55 12.55 0 0 0-16.93 0 .34.34 0 0 0 0 .5l1.3 1.26c.13.13.34.14.48 0a10 10 0 0 1 6.68-2.57m0 4.22a5.4 5.4 0 0 1 3.67 1.44c.14.13.35.13.48 0l1.3-1.33a.37.37 0 0 0-.01-.52 7.9 7.9 0 0 0-10.88 0 .37.37 0 0 0 0 .52l1.29 1.32c.13.14.34.14.48 0 1-.92 2.31-1.43 3.67-1.43m2.52 2.8q0 .15-.1.28l-2.18 2.45a.3.3 0 0 1-.24.11.3.3 0 0 1-.24-.1l-2.18-2.46a.43.43 0 0 1 .01-.56 3.44 3.44 0 0 1 4.82 0 .4.4 0 0 1 .11.28" clip-rule="evenodd"/>
-          <path fill-rule="evenodd" d="M70.5 5c2.05 0 3.08 0 3.88.34a4.3 4.3 0 0 1 2.28 2.28c.34.8.34 1.83.34 3.88s0 3.08-.34 3.88a4.3 4.3 0 0 1-2.28 2.28c-.8.34-1.83.34-3.88.34h-12c-2.05 0-3.08 0-3.88-.34a4.3 4.3 0 0 1-2.28-2.28c-.34-.8-.34-1.83-.34-3.88s0-3.08.34-3.88a4.3 4.3 0 0 1 2.28-2.28C55.42 5 56.45 5 58.5 5zM58.28 6c-1.85 0-2.77 0-3.48.36a3.3 3.3 0 0 0-1.44 1.44C53 8.5 53 9.43 53 11.28v.44c0 1.85 0 2.77.36 3.48a3.3 3.3 0 0 0 1.44 1.44c.7.36 1.63.36 3.48.36h12.44c1.85 0 2.77 0 3.48-.36a3.3 3.3 0 0 0 1.44-1.44c.36-.7.36-1.63.36-3.48v-.44c0-1.85 0-2.77-.36-3.48a3.3 3.3 0 0 0-1.44-1.44C73.5 6 72.57 6 70.72 6z" clip-rule="evenodd" style="opacity:.35"/>
-          <path d="M54 11c0-1.4 0-2.1.27-2.63a2.5 2.5 0 0 1 1.1-1.1C55.9 7 56.6 7 58 7h13c1.4 0 2.1 0 2.64.27q.72.37 1.09 1.1C75 8.9 75 9.6 75 11v1c0 1.4 0 2.1-.27 2.64a2.5 2.5 0 0 1-1.1 1.09C73.1 16 72.4 16 71 16H58c-1.4 0-2.1 0-2.63-.27a2.5 2.5 0 0 1-1.1-1.1C54 14.1 54 13.4 54 12z"/>
-          <path d="M78 9.5v4.08a2.2 2.2 0 0 0 1.33-2.04A2.2 2.2 0 0 0 78 9.5" style="opacity:.35"/>
-        </svg>
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-logo">App</div>
+        <nav class="nav">
+          <a class="nav-item active">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Projects</span>
+          </a>
+          <a class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Team</span>
+          </a>
+          <a class="nav-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+      </div>
+      <div class="user-card">
+        <div class="avatar">H</div>
+        <div class="user-info">
+          <div class="user-name">Haroon</div>
+          <div class="user-email">haroon@qawolf.com</div>
+        </div>
       </div>
     </div>
-
-    <div class="home-nav">
-      <div class="home-nav-title">Home</div>
-      <div class="avatar">H</div>
-    </div>
-
-    <div class="empty-state">
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B3BEF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9" cy="12" r="1"/>
-        <circle cx="15" cy="12" r="1"/>
-        <path d="M8 20v2h8v-2"/>
-        <path d="m12.5 17-.5-1-.5 1h1z"/>
-        <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/>
-      </svg>
-      <div class="empty-title">Nothing here yet</div>
-      <div class="empty-body">Your content will appear here once you get started.</div>
+    <div class="main">
+      <div class="topbar">
+        <div class="topbar-title">Home</div>
+        <button class="btn-new">New item</button>
+      </div>
+      <div class="empty-state">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B3BEF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/>
+          <path d="M8 20v2h8v-2"/><path d="m12.5 17-.5-1-.5 1h1z"/>
+          <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/>
+        </svg>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-body">Your content will appear here once you get started.</div>
+      </div>
     </div>
   </div>
 
