@@ -178,13 +178,13 @@ body {
 .nav-item:not(.active):hover { background: #f0f0f0; }
 .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; white-space: nowrap; }
 .nav-item.active span { font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; font-weight: 700; }
-.sidebar-wrap.collapsed .sidebar-header { flex-direction: column; align-items: center; gap: 12px; }
+.sidebar-wrap.collapsed .sidebar-toggle { display: none; }
+.sidebar-wrap.collapsed:not(.no-hover):hover .sidebar-toggle { display: flex; }
 .sidebar-wrap.collapsed .nav-item { justify-content: center; padding: 9px 0; }
 .sidebar-wrap.collapsed .nav-item span { display: none; }
 .sidebar-wrap.collapsed .user-card { justify-content: center; border-color: transparent; background: transparent; padding: 4px; }
 .sidebar-wrap.collapsed .user-info { display: none; }
 .sidebar-wrap.collapsed:not(.no-hover):hover .sidebar { width: 240px; padding-left: 24px; padding-right: 24px; box-shadow: 4px 0 24px rgba(0,0,0,0.12); }
-.sidebar-wrap.collapsed:not(.no-hover):hover .sidebar-header { flex-direction: row; }
 .sidebar-wrap.collapsed:not(.no-hover):hover .nav-item { justify-content: flex-start; padding: 9px 12px; }
 .sidebar-wrap.collapsed:not(.no-hover):hover .nav-item span { display: inline; }
 .sidebar-wrap.collapsed:not(.no-hover):hover .user-card { justify-content: flex-start; border-color: #eee; background: #fff; padding: 10px 12px; }
