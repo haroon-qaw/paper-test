@@ -38,33 +38,33 @@
     .field { display: flex; flex-direction: column; gap: 6px; }
     .field-label { font-size: 12px; font-weight: 700; color: #111; letter-spacing: 0.08em; }
     .field-input { border: 1.5px solid #eee; border-radius: 10px; padding: 13px 16px; font-family: inherit; font-size: 15px; color: #888; line-height: 22px; outline: none; transition: border-color 0.15s; width: 100%; }
-    .field-input:focus { border-color: #3B3BEF; color: #111; }
-    .forgot { font-size: 12px; font-weight: 400; font-family: "Inter Tight", system-ui, sans-serif; color: #3B3BEF; text-align: right; cursor: pointer; text-decoration: none; }
+    .field-input:focus { border-color: #FFA400; color: #111; }
+    .forgot { font-size: 12px; font-weight: 400; font-family: "Inter Tight", system-ui, sans-serif; color: #FFA400; text-align: right; cursor: pointer; text-decoration: none; }
     .form-actions { display: flex; flex-direction: column; gap: 16px; }
-    .btn-primary { background: #3B3BEF; border: none; border-radius: 10px; padding: 15px; font-family: inherit; font-size: 15px; font-weight: 700; color: #fff; text-align: center; letter-spacing: -0.01em; cursor: pointer; transition: opacity 0.15s; width: 100%; }
+    .btn-primary { background: #FFA400; border: none; border-radius: 10px; padding: 15px; font-family: inherit; font-size: 15px; font-weight: 700; color: #111; text-align: center; letter-spacing: -0.01em; cursor: pointer; transition: opacity 0.15s; width: 100%; }
     .btn-primary:hover:not(:disabled) { opacity: 0.88; }
     .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
     .signup-link { font-size: 12px; color: #888; text-align: center; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
-    .signup-link a { color: #3B3BEF; font-weight: 700; text-decoration: none; cursor: pointer; }
+    .signup-link a { color: #FFA400; font-weight: 700; text-decoration: none; cursor: pointer; }
 
     .sidebar { width: 240px; flex-shrink: 0; background: #FAFAFA; border-right: 1.5px solid #EEEEEE; display: flex; flex-direction: column; justify-content: space-between; padding: 32px 24px; }
     .sidebar-top { display: flex; flex-direction: column; gap: 32px; }
     .sidebar-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; }
     .nav { display: flex; flex-direction: column; gap: 4px; }
     .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; cursor: pointer; text-decoration: none; }
-    .nav-item.active { background: #3B3BEF; }
+    .nav-item.active { background: #FFA400; }
     .nav-item.active span { color: #fff; font-weight: 700; font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; }
     .nav-item:not(.active):hover { background: #f0f0f0; }
     .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
     .user-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #eee; background: #fff; }
-    .avatar { width: 28px; height: 28px; border-radius: 50%; background: #3B3BEF; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 700; color: #fff; }
+    .avatar { width: 28px; height: 28px; border-radius: 50%; background: #FFA400; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 700; color: #fff; }
     .user-info { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
     .user-name { font-size: 13px; font-weight: 700; color: #111; white-space: nowrap; }
     .user-email { font-size: 11px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
     .main { flex: 1; display: flex; flex-direction: column; }
     .topbar { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1.5px solid #EEEEEE; flex-shrink: 0; }
     .topbar-title { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; }
-    .btn-new { background: #3B3BEF; border: none; border-radius: 8px; padding: 9px 18px; font-family: inherit; font-size: 13px; font-weight: 700; color: #fff; cursor: pointer; transition: opacity 0.15s; }
+    .btn-new { background: #FFA400; border: none; border-radius: 8px; padding: 9px 18px; font-family: inherit; font-size: 13px; font-weight: 700; color: #fff; cursor: pointer; transition: opacity 0.15s; }
     .btn-new:hover { opacity: 0.88; }
     .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
     .empty-title { font-size: 16px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
@@ -152,7 +152,7 @@
         <button class="btn-new">New item</button>
       </div>
       <div class="empty-state">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B3BEF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FFA400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/>
           <path d="M8 20v2h8v-2"/><path d="m12.5 17-.5-1-.5 1h1z"/>
           <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/>
