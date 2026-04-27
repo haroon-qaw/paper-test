@@ -129,7 +129,8 @@
       cursor: pointer;
       transition: opacity 0.15s;
     }
-    .btn-primary:hover { opacity: 0.88; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.88; }
+    .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
 
     .signup-link {
       font-size: 14px;
@@ -223,17 +224,17 @@
     <div class="login-form">
       <div class="field">
         <div class="field-label">EMAIL</div>
-        <input class="field-input" type="email" placeholder="you@example.com" />
+        <input class="field-input" id="email" type="email" placeholder="you@example.com" oninput="checkFields()" />
       </div>
       <div class="field">
         <div class="field-label">PASSWORD</div>
-        <input class="field-input" type="password" placeholder="••••••••" />
+        <input class="field-input" id="password" type="password" placeholder="••••••••" oninput="checkFields()" />
       </div>
       <a class="forgot">Forgot password?</a>
     </div>
 
     <div class="login-cta">
-      <button class="btn-primary" onclick="navigate('home')">Sign In</button>
+      <button class="btn-primary" id="sign-in-btn" onclick="navigate('home')" disabled>Sign In</button>
       <div class="signup-link">Don't have an account? <a>Sign up</a></div>
     </div>
   </div>
@@ -272,6 +273,12 @@
   </div>
 
   <script>
+    function checkFields() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      document.getElementById('sign-in-btn').disabled = !(email && password);
+    }
+
     function navigate(screen) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById('screen-' + screen).classList.add('active');
