@@ -30,11 +30,17 @@ body {
 .login-left {
   width: 50%;
   flex-shrink: 0;
-  background: #3B3BEF;
+  background-image: url(https://app.paper.design/file-assets/01KQ8084NQ6RK16CGJ1X2P5ZQ2/01KQ8B6NZVSAT0W1C6A909J7AC.gif);
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 56px 64px;
+}
+.login-tagline {
+  background: #000;
+  padding: 24px;
 }
 .login-logo {
   font-size: 22px;
