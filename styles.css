@@ -133,7 +133,7 @@ body {
 .sidebar {
   width: 240px;
   flex-shrink: 0;
-  background: #FAFAFA;
+  background: #FFF1E1;
   border-right: 1.5px solid #EEEEEE;
   display: flex;
   flex-direction: column;
