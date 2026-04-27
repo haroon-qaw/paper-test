@@ -28,7 +28,7 @@ body {
 
 /* ── LOGIN ── */
 .login-left {
-  width: 560px;
+  width: 50%;
   flex-shrink: 0;
   background: #3B3BEF;
   display: flex;
