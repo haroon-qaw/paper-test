@@ -47,15 +47,29 @@
     .signup-link { font-size: 12px; color: #888; text-align: center; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
     .signup-link a { color: #FFA400; font-weight: 700; text-decoration: none; cursor: pointer; }
 
-    .sidebar { width: 240px; flex-shrink: 0; background: #FFF1E1; border-right: 1.5px solid #EEEEEE; display: flex; flex-direction: column; justify-content: space-between; padding: 32px 24px; }
+    .sidebar-wrap { width: 240px; flex-shrink: 0; position: relative; transition: width 0.25s ease; }
+    .sidebar-wrap.collapsed { width: 64px; }
+    .sidebar { position: absolute; top: 0; left: 0; height: 100%; width: 240px; background: #FFF1E1; border-right: 1.5px solid #EEEEEE; display: flex; flex-direction: column; justify-content: space-between; padding: 32px 24px; transition: width 0.25s ease, box-shadow 0.25s ease; overflow: hidden; z-index: 10; }
+    .sidebar-wrap.collapsed .sidebar { width: 64px; padding-left: 18px; padding-right: 18px; }
+    .sidebar-wrap.collapsed:hover .sidebar { width: 240px; padding-left: 24px; padding-right: 24px; box-shadow: 4px 0 24px rgba(0,0,0,0.12); }
+    .sidebar-header { display: flex; align-items: center; justify-content: space-between; }
+    .sidebar-toggle { background: none; border: none; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #888; flex-shrink: 0; }
+    .sidebar-toggle:hover { background: rgba(0,0,0,0.06); }
+    .icon-open { display: none; }
+    .sidebar-wrap.collapsed .icon-close { display: none; }
+    .sidebar-wrap.collapsed .icon-open { display: block; }
     .sidebar-top { display: flex; flex-direction: column; gap: 32px; }
-    .sidebar-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; }
+    .sidebar-logo { font-size: 18px; font-weight: 700; color: #111; letter-spacing: -0.02em; flex-shrink: 0; }
     .nav { display: flex; flex-direction: column; gap: 4px; }
     .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 8px; cursor: pointer; text-decoration: none; }
     .nav-item.active { background: #FFA400; }
     .nav-item.active span { color: #000; font-weight: 700; font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; }
     .nav-item:not(.active):hover { background: #f0f0f0; }
-    .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; }
+    .nav-item span { font-size: 14px; color: #888; font-family: "Inter Tight", system-ui, sans-serif; font-weight: 400; white-space: nowrap; }
+    .sidebar-wrap.collapsed .nav-item span { display: none; }
+    .sidebar-wrap.collapsed:hover .nav-item span { display: inline; }
+    .sidebar-wrap.collapsed .user-info { display: none; }
+    .sidebar-wrap.collapsed:hover .user-info { display: flex; }
     .user-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #eee; background: #fff; }
     .avatar { width: 28px; height: 28px; border-radius: 50%; background: #FFA400; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px; font-weight: 700; color: #fff; }
     .user-info { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
@@ -115,12 +129,19 @@
 
   <!-- HOME SCREEN -->
   <div class="screen" id="screen-home">
+    <div class="sidebar-wrap" id="sidebar-wrap">
     <div class="sidebar">
       <div class="sidebar-top">
-        <svg class="sidebar-logo" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 13c3.5-2 8-2 10 2a5.5 5.5 0 0 1 8 5"/>
-          <path d="M5.15 17.89c5.52-1.52 8.65-6.89 7-12C11.55 4 11.5 2 13 2c3.22 0 5 5.5 5 8 0 6.5-4.2 12-10.49 12C5.11 22 2 22 2 20c0-1.5 1.14-1.55 3.15-2.11Z"/>
-        </svg>
+        <div class="sidebar-header">
+          <svg class="sidebar-logo" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFA400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 13c3.5-2 8-2 10 2a5.5 5.5 0 0 1 8 5"/>
+            <path d="M5.15 17.89c5.52-1.52 8.65-6.89 7-12C11.55 4 11.5 2 13 2c3.22 0 5 5.5 5 8 0 6.5-4.2 12-10.49 12C5.11 22 2 22 2 20c0-1.5 1.14-1.55 3.15-2.11Z"/>
+          </svg>
+          <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <svg class="icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
+            <svg class="icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
+          </button>
+        </div>
         <nav class="nav">
           <a class="nav-item active">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -147,6 +168,7 @@
           <div class="user-email">haroon@qawolf.com</div>
         </div>
       </div>
+    </div>
     </div>
     <div class="main">
       <div class="topbar">
@@ -175,6 +197,9 @@
     function navigate(screen) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById('screen-' + screen).classList.add('active');
+    }
+    function toggleSidebar() {
+      document.getElementById('sidebar-wrap').classList.toggle('collapsed');
     }
   </script>
 </body>

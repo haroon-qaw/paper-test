@@ -8,3 +8,7 @@ function navigate(screen) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + screen).classList.add('active');
 }
+
+function toggleSidebar() {
+  document.getElementById('sidebar-wrap').classList.toggle('collapsed');
+}
