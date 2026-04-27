@@ -152,7 +152,7 @@ body {
   overflow: hidden;
   z-index: 10;
 }
-.sidebar-wrap.collapsed .sidebar { width: 64px; padding-left: 18px; padding-right: 18px; }
+.sidebar-wrap.collapsed .sidebar { width: 64px; padding-left: 16px; padding-right: 16px; }
 
 .sidebar-header { display: flex; align-items: center; justify-content: space-between; }
 .sidebar-toggle { background: none; border: none; cursor: pointer; padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #888; flex-shrink: 0; }
@@ -180,7 +180,7 @@ body {
 .nav-item.active span { font-family: "GT Flexa VF", "GTFlexaVF-Bold", system-ui, sans-serif; font-weight: 700; }
 .sidebar-wrap.collapsed .sidebar-toggle { display: none; }
 .sidebar-wrap.collapsed:not(.no-hover):hover .sidebar-toggle { display: flex; }
-.sidebar-wrap.collapsed .nav-item { justify-content: center; padding: 9px 0; }
+.sidebar-wrap.collapsed .nav-item { justify-content: center; padding: 9px 8px; }
 .sidebar-wrap.collapsed .nav-item span { display: none; }
 .sidebar-wrap.collapsed .user-card { justify-content: center; border-color: transparent; background: transparent; padding: 4px; }
 .sidebar-wrap.collapsed .user-info { display: none; }
