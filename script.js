@@ -13,6 +13,7 @@ function showScreen(screen) {
 
 function navigate(screen) {
   location.hash = screen;
+  showScreen(screen);
 }
 
 window.addEventListener('hashchange', () => {

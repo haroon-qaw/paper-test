@@ -204,7 +204,7 @@
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       el.classList.add('active');
     }
-    function navigate(screen) { location.hash = screen; }
+    function navigate(screen) { location.hash = screen; showScreen(screen); }
     window.addEventListener('hashchange', () => showScreen(location.hash.slice(1) || 'login'));
     showScreen(location.hash.slice(1) || 'login');
     function toggleSidebar() {
