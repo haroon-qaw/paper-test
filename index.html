@@ -94,7 +94,7 @@
 <body>
 
   <!-- LOGIN SCREEN -->
-  <div class="screen active" id="screen-login">
+  <div class="screen" id="screen-login">
     <div class="login-left">
       <div style="background:#FFA400;border-radius:1024px;padding:16px;width:fit-content;display:flex;align-items:center;justify-content:center;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -198,10 +198,15 @@
       const password = document.getElementById('password').value;
       document.getElementById('sign-in-btn').disabled = !(email && password);
     }
-    function navigate(screen) {
+    function showScreen(screen) {
+      const el = document.getElementById('screen-' + screen);
+      if (!el) return;
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById('screen-' + screen).classList.add('active');
+      el.classList.add('active');
     }
+    function navigate(screen) { location.hash = screen; }
+    window.addEventListener('hashchange', () => showScreen(location.hash.slice(1) || 'login'));
+    showScreen(location.hash.slice(1) || 'login');
     function toggleSidebar() {
       const wrap = document.getElementById('sidebar-wrap');
       wrap.classList.toggle('collapsed');
